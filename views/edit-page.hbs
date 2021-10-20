@@ -1,0 +1,153 @@
+<style>
+  body {
+    background-color: #00013a;
+    background-image: url(../public/images/oform-1.png);
+  }
+
+  form {
+    border: 3px solid #fff;
+    padding: 50px 30px;
+    margin-top: 40px;
+    border-radius: 25px;
+  }
+
+  .addTitle {
+    color: #fff;
+    margin-top: 80px;
+    margin-bottom: 20px;
+  }
+
+  .formBtn {
+    background: #ffc93c;
+    color: #444;
+  }
+
+  .addInp {
+    background: #ffc93c;
+    padding: 5px 10px;
+    border: none;
+    color: #444;
+  }
+
+  .titleInfo {
+    color: #fff;
+  }
+
+  .toBtn {
+    background: #ffc93c;
+    border: none;
+    color: #444;
+  }
+</style>
+<div class="container">
+  <h2 class="mb-4 text-center addTitle">Добавить продукт</h2>
+  <form action="/admin/edit/{{product.id}}" enctype="multipart/form-data" method="post">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-group mb-4 mt-5">
+          <input type="text" class="form-control" placeholder="Name" name="name" value="{{product.name}}">
+        </div>
+        <div class="input-group mb-4">
+          <input type="number" class="form-control" placeholder="Price" name="price" value="{{product.price}}">
+        </div>
+        <div class="input-group mb-4">
+          <input type="text" class="form-control" placeholder="Weight" name="weight" value="{{product.weight}}">
+        </div>
+        <div class="input-group mb-5">
+          <input type="file" class="form-control" id="inputGroupFile02" name="image" value="{{product.image}}">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="EditPage">
+          <button class="addInp btn" type="button" style="margin-top: 0px;margin-bottom: 20px;">Add
+            info</button>
+          <div class="infoBody EditBody">
+            <div>{{product.info}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btnBox text-center">
+      <button class="btn formBtn">Изменить</button>
+      <input type="hidden" class="prod-id" value="{{product.id}}">
+    </div>
+  </form>
+</div>
+
+<script>
+  const EditLoader = document.querySelector('.EditBody');
+  EditLoader.innerHTML = '<div class="loader-center"><div class="lds-facebook"><div></div><div></div><div></div></div></div>'
+
+  window.addEventListener("load", function (e) {
+    const infoBody = document.querySelector(".infoBody");
+    const addBtn = document.querySelector(".addInp");
+
+    fetch('/admin/all/product').then(data => data.json())
+      .then(products => {
+        setTimeout(() => {
+          const EditBody = document.querySelector('.EditBody');
+          const id = document.querySelector('.prod-id').value
+          const product = products.find(c => c._id.toString() === id.toString())
+
+          const html = product.info.map((text, i) => {
+            return `
+      <div class="infor"><span class="titleInfo">Info .${i + 1}</span>
+      <input type="text" class="form-control mb-3" name="infoTitle" value="${text.infoTitle}" id="inputGroupFile02">
+        <button class="btn boxBtn toBtn mb-3" data-id="box${i}" type="button" style="margin-top: 0px !Important;">
+            <svg data-id="box${i}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg toBtn" viewBox="0 0 16 16">
+    <path data-id="box${i}" class="toBtn" d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+  </svg>
+        </button>
+        <div class="infoBox box${i}">
+        ${text.infoText.map(info => {
+              return `<input type="text" name="box${i}Text" class="form-control smallInp mb-3" value="${info.text}">`
+            }).join('')
+              }
+        </div></div>`;
+
+          }).join('')
+          EditBody.innerHTML = html
+        }, 1000)
+      })
+
+    let i = 0;
+    const editPage = document.querySelector('.EditBody')
+    const loader = editPage.querySelector('.loader-center')
+    if (loader || 0) {
+      setTimeout(() => {
+        const editPage = document.querySelector('.infoBody');
+        const dir = editPage.querySelectorAll('div')
+        i = dir.length - 1
+      }, 1300)
+    }
+
+    addBtn.addEventListener("click", (c) => {
+      const div = document.createElement("div");
+      div.innerHTML = `
+    <span class="titleInfo">Info .${i + 1}</span>
+    <input type="text" class="form-control mb-3" name="infoTitle" id="inputGroupFile02">
+        <button class="btn boxBtn toBtn mb-3" data-id="box${i}" type="button" style="margin-top: 0px !Important;">
+          <svg data-id="box${i}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg toBtn" viewBox="0 0 16 16">
+              <path data-id="box${i}" class="toBtn" d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+          </svg>
+        </button>
+      <div class="infoBox box${i}">
+      </div>`;
+      infoBody.appendChild(div);
+      i++;
+    });
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("toBtn")) {
+        const attr = e.target.getAttribute("data-id");
+        const box = document.querySelector(`.${attr}`);
+        const inp = document.createElement("input");
+        inp.setAttribute("type", "text");
+        inp.setAttribute("name", `${attr}Text`);
+        inp.classList.add('form-control')
+        inp.classList.add('smallInp')
+        inp.classList.add('mb-3')
+        box.appendChild(inp);
+      }
+    });
+  });
+</script>
