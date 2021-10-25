@@ -55,6 +55,28 @@ header {
   width: 40%;
 }
 
+.fixed {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(4, 5, 61, 0.9);
+  position: fixed;
+  bottom: 60px;
+  right: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  cursor: pointer;
+  border: 0.5px #fff solid;
+  z-index: 10000;
+}
+
+.fixed svg {
+  color: #fff;
+  transform: scale(1.3);
+}
+
 /* .navMenu li a:hover::after {
   width: 100%;
 } */
@@ -71,12 +93,13 @@ nav {
 
 header .headerTitle {
   margin-top: 210px;
-  color: #ffc93c;
+  color: #fff;
   font-size: 100px;
   font-weight: 500;
   text-align: center;
   font-style: italic;
   font-family: "Lato", sans-serif;
+  text-shadow: 0 0 10px #ffc93c;
 }
 
 header .headerText {
@@ -92,7 +115,7 @@ header .headerText {
 
 main {
   background-color: #00013a;
-  background-image: url(../image/oform-1.png);
+  background-image: url(../images/oform-1.png);
   background-repeat: no-repeat;
   background-position-x: right;
   background-size: 25%;
@@ -211,7 +234,7 @@ main .mainTextL {
 }
 
 .category .categoryBody .card .cardInfo::before {
-  content: '';
+  content: "";
   display: block;
   width: 75%;
   margin: auto;
@@ -344,9 +367,7 @@ footer .footerBottom a {
   color: #00013a;
 }
 
-
 /* add page  */
-
 
 .smallInp {
   width: 90%;
@@ -357,20 +378,81 @@ footer .footerBottom a {
   margin-left: 90%;
 }
 
-
-
+.toggleLogo {
+  display: none;
+}
 
 /* media xl */
-@media (max-width: 1399px) {}
+@media (max-width: 1399px) {
+  .navMenu li {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  header .headerTitle {
+    margin-top: 130px;
+  }
+}
 
 /* media lg */
-@media (max-width: 1199px) {}
+@media (max-width: 1199px) {
+  header .headerTitle {
+    margin-top: 130px;
+    font-size: 80px;
+  }
+  .navMenu li {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
 
 /* media md */
-@media (max-width: 991px) {}
+@media (max-width: 991px) {
+  .navbar {
+    width: 100%;
+    position: absolute;
+  }
+  header .headerText {
+    padding: 0 40px;
+  }
+  header .headerTitle {
+    font-size: 65px;
+  }
+  main .mainText {
+    padding: 0 75px;
+  }
+  .toggleLogo {
+    display: inline-block;
+    width: 16%;
+    margin-right: 30px;
+  }
+  .fixed {
+    bottom: 40px;
+    right: 50px;
+  }
+}
 
 /* media sm */
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+  .navbar {
+    width: 100%;
+    position: absolute;
+  }
+  .toggleLogo {
+    display: inline-block;
+    width: 22%;
+    margin-right: 30px;
+  }
+  header .headerText {
+    font-size: 22px;
+    margin-top: 30px;
+  }
+  main .mainText {
+    padding: 0 40px;
+  }
+  main {
+    background-size: 35%;
+  }
+}
 
 /* media xs */
 @media (max-width: 575px) {
@@ -379,17 +461,23 @@ footer .footerBottom a {
   }
 
   header .headerTitle {
-    margin-top: 80px;
-    font-size: 50px;
+    margin-top: 100px;
+    font-size: 38px;
   }
 
   header .headerText {
     padding: 0;
     margin-bottom: 90px;
+    font-size: 18px;
   }
 
   .navMenu li a {
     font-size: 18px;
+  }
+
+  main {
+    padding: 50px 0;
+    background-size: 25%;
   }
 
   main .mainTitle {
@@ -399,6 +487,7 @@ footer .footerBottom a {
 
   main .mainText {
     padding: 0;
+    font-size: 16px;
   }
 
   .category .categoryTitle {
@@ -420,6 +509,7 @@ footer .footerBottom a {
 
   .category .categoryHeader {
     margin-bottom: 0;
+    padding: 25px 0;
   }
 
   .partners {
@@ -428,5 +518,30 @@ footer .footerBottom a {
 
   .partners .sectionTitle {
     font-size: 25px;
+  }
+
+  .category .categoryBody .card .cardTitle {
+    font-size: 22px;
+  }
+  .category .categoryBody .card .cardPrice {
+    font-size: 24px;
+  }
+  .navbar {
+    width: 100%;
+    position: absolute;
+  }
+  .toggleLogo {
+    display: inline-block;
+    width: 40%;
+    margin-right: 15px;
+  }
+  footer .footerTop .menuItem .menuRight span {
+    font-size: 15px;
+  }
+  .fixed {
+    bottom: 20px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
   }
 }

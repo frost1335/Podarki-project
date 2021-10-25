@@ -1,39 +1,114 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <button class="navbar-toggler" style="box-shadow: none;" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <svg style="color: #fff; font-size: 20px;" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-        fill="currentColor" class="bi bi-text-left" viewBox="0 0 16 16">
-        <path fill-rule="evenodd"
-          d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+    <button
+      class="navbar-toggler"
+      style="box-shadow: none;"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <svg
+        style="color: #fff; font-size: 20px;"
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        fill="currentColor"
+        class="bi bi-text-left bar"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
+        ></path>
       </svg>
+      <svg
+        class="times"
+        style="display: none; transform: scale(1.7) rotate(45deg);color: #fff;"
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        t="1551322312294"
+        viewBox="0 0 1024 1024"
+        version="1.1"
+        pId="10297"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      ><defs></defs><path
+          d="M474 152m8 0l60 0q8 0 8 8l0 704q0 8-8 8l-60 0q-8 0-8-8l0-704q0-8 8-8Z"
+          pId="10298"
+        ></path><path
+          d="M168 474m8 0l672 0q8 0 8 8l0 60q0 8-8 8l-672 0q-8 0-8-8l0-60q0-8 8-8Z"
+          pId="10299"
+        ></path></svg>
     </button>
+    <img class="logoImg toggleLogo" src="/images/logo.png" alt="logo" />
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav navMenu me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active logoLink" aria-current="page" href="#"><img class="logoImg" src="/images/logo.png"
-              alt="logo" /></a>
+        <li class="nav-item d-lg-block d-none">
+          <a class="nav-link active logoLink" aria-current="page" href="#"><img
+              class="logoImg"
+              src="/images/logo.png"
+              alt="logo"
+            /></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active scrollHome" aria-current="page" href="/">Home</a>
+          <a
+            class="nav-link active scrollHome"
+            aria-current="page"
+            href="/"
+          >Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active scrollCatalog" aria-current="page" href="#">Catalog</a>
+          <a
+            class="nav-link active scrollCatalog"
+            aria-current="page"
+            href="#"
+          >Catalog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active scrollContact" aria-current="page" href="#">Contact</a>
+          <a
+            class="nav-link active scrollContact"
+            aria-current="page"
+            href="#"
+          >Contact</a>
         </li>
         {{#if admin}}
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/admin/logout">Выйти</a>
-        </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="/admin/logout"
+            >Выйти</a>
+          </li>
         {{/if}}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="tel:+998(99) 408-77-11">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="tel:+998(99) 408-77-11"
+          >
             +998(99) 408-77-11</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+<div class="fixed">
+  <svg
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+    viewBox="0 0 16 16"
+    height="1em"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  ><path
+      fill-rule="evenodd"
+      d="M7.646 4.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L8 5.707l-5.646 5.647a.5.5 0 01-.708-.708l6-6z"
+      clip-rule="evenodd"
+    ></path></svg>
+</div>

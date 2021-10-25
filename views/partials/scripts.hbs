@@ -14,13 +14,6 @@
 
         function myFunction(x, x2) {
             if (x.matches) {
-                console.log(window.scrollY)
-                $(".scrollCatalog").on("click", function (e) {
-                    $("html").animate({ scrollTop: 3530 }, 100);
-                });
-                $(".scrollContact").on("click", function (e) {
-                    $("html").animate({ scrollTop: 7330 }, 50);
-                });
                 var swiper = new Swiper(".swiper1", {
                     navigation: {
                         nextEl: ".swiper-button-next",
@@ -47,12 +40,6 @@
                 });
             }
             else {
-                $(".scrollCatalog").on("click", function (e) {
-                    $("html").animate({ scrollTop: 1800 }, 100);
-                });
-                $(".scrollContact").on("click", function (e) {
-                    $("html").animate({ scrollTop: 3400 }, 50);
-                });
                 var swiper = new Swiper(".swiper1", {
                     navigation: {
                         nextEl: ".swiper-button-next",
@@ -80,9 +67,44 @@
             }
         }
 
+        if($(".scrollContact")[0]){
+            $(".scrollContact").on("click", function (e) {
+                $("html").animate({ scrollTop: 3000000 }, 50);
+            });
+        }
+
+
+        const scrollYTitle = $('.categoryTitle')[0].offsetTop - 70
+
+        if(scrollYTitle){
+            $(".scrollCatalog").on("click", function (e) {
+                $("html").animate({ scrollTop: scrollYTitle }, 100);
+            });
+        }
+
+
         var x = window.matchMedia("(max-width: 991px)")
         myFunction(x)
         x.addListener(myFunction)
+
+        document.addEventListener('scroll', function(e){
+            if(window.scrollY >= 300){
+                $('.fixed').show(300, function(){$(this).css('display', 'flex')})
+            }
+            else{
+                $('.fixed').hide(300)
+            }
+        })
+
+        $('.fixed').on('click', function(e){
+            $("html").animate({ scrollTop: 0 }, 100);
+        })
+
+
+        $('.navbar-toggler').on('click', function(e){
+            $('.bar').toggle(200)
+            $('.times').toggle(200)
+        })
     </script>
     <script src="/javascripts/script.js"></script>
 </div>
